@@ -1,0 +1,144 @@
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+  background: #fefefe;
+}
+
+table thead {
+  background: black;
+  border-bottom: none;
+  color: #fff;
+}
+
+table tr {
+  padding: 0.35em;
+}
+
+table tr:nth-child(even) {
+  background: #f0f0f0;
+}
+
+table tbody tr:hover {
+  background: #d9e3e8;
+}
+
+table th,
+table td {
+  padding: 0.625em;
+  text-align: center;
+}
+
+table th {
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead th {
+    display: none;
+  }
+
+  table tr {
+    display: block;
+  }
+
+  table td {
+    display: block;
+    text-align: left;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: light;
+    text-transform: uppercase;
+    font-size: 0.7em;
+    margin-bottom: 0.6em;
+    color: #e9363f;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+.paginationBttns {
+  width: 80%;
+  height: 40px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-left: 350px;
+}
+
+.paginationBttns a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid black;
+  color: black;
+  cursor: pointer;
+}
+
+.paginationBttns a:hover {
+  color: white;
+  background-color: black;
+}
+
+.paginationActive a {
+  color: white;
+  background-color: black;
+}
+
+.paginationDisabled a {
+  color: white;
+  background-color: #dc143c;
+}
+
+input[type="search"] {
+  border: none;
+  background: transparent;
+  margin: 0;
+  padding: 7px 8px;
+  font-size: 14px;
+  color: inherit;
+  border: 1px solid transparent;
+  border-radius: inherit;
+}
+
+input[type="search"]::placeholder {
+  color: #bbb;
+}
+
+input.nosubmit {
+  border: 1px solid #555;
+  padding: 9px 4px 9px 40px;
+  background: transparent
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat 13px center;
+}
+
+.find {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
