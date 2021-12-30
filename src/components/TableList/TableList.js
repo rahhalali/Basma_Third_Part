@@ -77,7 +77,7 @@ function TableList() {
 
   }, [pagination,Page]);
 
-   paginate = (pageNumber) =>{
+  const paginate = (pageNumber) =>{
        setPage(pageNumber);
     };
 
