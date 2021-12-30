@@ -49,11 +49,8 @@ function TableList() {
     console.log(e.target.value);
   };
 
-  
-
-  useEffect((pagination) => {
-
   const getData = async (page = 1) => {
+
     let result = await axios.get(
       `http://localhost:8000/api/admins/filter?nb=${pagination}&&page=${page}`,
       {
@@ -64,14 +61,14 @@ function TableList() {
         },
       }
     );
-    console.log("res", result);
-
     setUsers(result.data.users.data);
     setCurrent(result.data.users.current_page);
     setTotal(result.data.users.total);
     setPerPage(result.data.users.per_page);
     setLoading(false);
   };
+
+  useEffect(() => {
 
   getData();
 
@@ -149,7 +146,7 @@ function TableList() {
           activePage={current_page}
           totalItemsCount={total}
           itemsCountPerPage={per_page}
-          onChange={(pagination) => useEffect(pagination)}
+          onChange={(pagination) => getData(pagination)}
           itemClass="page-item"
           linkClass="page-link"
           firstPageText="First"
