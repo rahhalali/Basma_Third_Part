@@ -1,6 +1,6 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
-import { Bar, Pie, Doughnut } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import SessionContext from "../context/SessionContext";
 import axios from "axios";
 import styled from "styled-components";
