@@ -77,9 +77,9 @@ function TableList() {
 
   }, [pagination,Page]);
 
-   paginate = (pageNumber) =>
-      setPage(pageNumber);
-    });
+   paginate = (pageNumber) =>{
+       setPage(pageNumber);
+    };
 
   const filterUsers = users.filter((user) => {
     return user.first_name.toLowerCase().includes(search.toLowerCase());
