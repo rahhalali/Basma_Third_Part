@@ -71,9 +71,10 @@ function TableList() {
 
   useEffect(() => {
 
+
   getData();
 
-  }, []);
+  }, [getData]);
 
   const filterUsers = users.filter((user) => {
     return user.first_name.toLowerCase().includes(search.toLowerCase());
