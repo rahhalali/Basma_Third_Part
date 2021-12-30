@@ -73,7 +73,7 @@ function TableList() {
 
   getData();
 
-  }, [getData,pagination]);
+  }, []);
 
   const filterUsers = users.filter((user) => {
     return user.first_name.toLowerCase().includes(search.toLowerCase());
