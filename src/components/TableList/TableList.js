@@ -49,9 +49,8 @@ function TableList() {
     console.log(e.target.value);
   };
 
-  const getData = (page = 1) => {
+  const getData = async (page = 1) => {
 
-       useEffect(async() => {
     let result = await axios.get(
       `http://localhost:8000/api/admins/filter?nb=${pagination}&&page=${page}`,
       {
@@ -67,11 +66,14 @@ function TableList() {
     setTotal(result.data.users.total);
     setPerPage(result.data.users.per_page);
     setLoading(false);
-  }, [pagination]);
- 
+    
   };
 
-  
+  useEffect(() => {
+
+  getData();
+
+  }, [getData,pagination]);
 
   const filterUsers = users.filter((user) => {
     return user.first_name.toLowerCase().includes(search.toLowerCase());
