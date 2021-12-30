@@ -31,11 +31,7 @@ function TableList() {
   const [current_page, setCurrent] = useState(0);
   const [total, setTotal] = useState(0);
   const [per_page, setPerPage] = useState(0);
-  const [Page,setPage]=useState(1); 
-    // const [pageNumber, setPageNumber] = useState(0);
-
-  // const usersPerPage = 20;
-  // const pagesVisited = pageNumber * usersPerPage;
+  const [Page, setPage] = useState(1);
 
   const onChange = (e) => {
     if (e.target.value === "----") {
@@ -50,36 +46,31 @@ function TableList() {
     console.log(e.target.value);
   };
 
-
   useEffect(() => {
-
-  const getData = async (Page) => {
-
-    let result = await axios.get(
-      `http://localhost:8000/api/admins/filter?nb=${pagination}&&page=${Page}`,
-      {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      }
-    );
-    setUsers(result.data.users.data);
-    setCurrent(result.data.users.current_page);
-    setTotal(result.data.users.total);
-    setPerPage(result.data.users.per_page);
-    setLoading(false);
-    
-  };
-
-  getData();
-
-  }, [pagination,Page,access_token]);
-
-  const paginate = (pageNumber) =>{
-       setPage(pageNumber);
+    const getData = async () => {
+      let result = await axios.get(
+        `http://localhost:8000/api/admins/filter?nb=${pagination}&&page=${Page}`,
+        {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      );
+      setUsers(result.data.users.data);
+      setCurrent(result.data.users.current_page);
+      setTotal(result.data.users.total);
+      setPerPage(result.data.users.per_page);
+      setLoading(false);
     };
+
+    getData();
+  }, [pagination, Page, access_token]);
+
+  const paginate = (pagination) => {
+    setPage(pagination);
+  };
 
   const filterUsers = users.filter((user) => {
     return user.first_name.toLowerCase().includes(search.toLowerCase());
