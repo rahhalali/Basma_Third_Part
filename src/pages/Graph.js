@@ -42,7 +42,7 @@ function Graph() {
     const optionElementId = optionElement.getAttribute("value");
 
     let result = await axios.get(
-      `http://localhost:8000/api/admins/getAverage?name=${optionElementId}`,
+      `https://powerful-retreat-11092.herokuapp.com/api/admins/getAverage?name=${optionElementId}`,
       {
         headers: {
           Authorization: `Bearer ${access_token}`,

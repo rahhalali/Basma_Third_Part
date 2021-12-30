@@ -49,7 +49,7 @@ function TableList() {
   useEffect(() => {
     const getData = async () => {
       let result = await axios.get(
-        `http://localhost:8000/api/admins/filter?nb=${pagination}&&page=${Page}`,
+        `https://powerful-retreat-11092.herokuapp.com/api/admins/filter?nb=${pagination}&&page=${Page}`,
         {
           headers: {
             Authorization: `Bearer ${access_token}`,

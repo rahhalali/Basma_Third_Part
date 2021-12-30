@@ -26,7 +26,7 @@ export default function SessionProvider({ children }) {
     const body = new FormData();
     body.append("email", email);
     body.append("password", password);
-    const response = await fetch("http://localhost:8000/api/admins/login", {
+    const response = await fetch("https://powerful-retreat-11092.herokuapp.com/api/admins/login", {
       method: "POST",
       body,
     });
