@@ -71,7 +71,7 @@ function TableList() {
 
   useEffect(() => {
     getData();
-  }, [pagination]);
+  }, [pagination,getData]);
 
   // const pageCount = Math.ceil(users.length / usersPerPage);
 
