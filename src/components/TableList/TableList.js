@@ -51,7 +51,7 @@ function TableList() {
 
   
 
-  useEffect(() => {
+  useEffect((pagination) => {
 
   const getData = async (page = 1) => {
     let result = await axios.get(
@@ -76,12 +76,6 @@ function TableList() {
   getData();
 
   }, [pagination]);
-
-  // const pageCount = Math.ceil(users.length / usersPerPage);
-
-  // const changePage = ({ selected }) => {
-  //   setPageNumber(selected);
-  // };
 
   const filterUsers = users.filter((user) => {
     return user.first_name.toLowerCase().includes(search.toLowerCase());
@@ -155,7 +149,7 @@ function TableList() {
           activePage={current_page}
           totalItemsCount={total}
           itemsCountPerPage={per_page}
-          onChange={(pagination) => getData(pagination)}
+          onChange={(pagination) => useEffect(pagination)}
           itemClass="page-item"
           linkClass="page-link"
           firstPageText="First"
