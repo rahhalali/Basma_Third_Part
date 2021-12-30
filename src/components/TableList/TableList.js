@@ -31,7 +31,8 @@ function TableList() {
   const [current_page, setCurrent] = useState(0);
   const [total, setTotal] = useState(0);
   const [per_page, setPerPage] = useState(0);
-  // const [pageNumber, setPageNumber] = useState(0);
+  const [Page,setPage]=useState(1); 
+    // const [pageNumber, setPageNumber] = useState(0);
 
   // const usersPerPage = 20;
   // const pagesVisited = pageNumber * usersPerPage;
@@ -49,10 +50,13 @@ function TableList() {
     console.log(e.target.value);
   };
 
-  const getData = async (page = 1) => {
+
+  useEffect(() => {
+
+  const getData = async (Page) => {
 
     let result = await axios.get(
-      `http://localhost:8000/api/admins/filter?nb=${pagination}&&page=${page}`,
+      `http://localhost:8000/api/admins/filter?nb=${pagination}&&page=${Page}`,
       {
         headers: {
           Authorization: `Bearer ${access_token}`,
@@ -69,12 +73,13 @@ function TableList() {
     
   };
 
-  useEffect(() => {
-
-
   getData();
 
-  }, [getData]);
+  }, [pagination,Page]);
+
+   paginate = (pageNumber) =>
+      setPage(pageNumber);
+    });
 
   const filterUsers = users.filter((user) => {
     return user.first_name.toLowerCase().includes(search.toLowerCase());
@@ -148,7 +153,7 @@ function TableList() {
           activePage={current_page}
           totalItemsCount={total}
           itemsCountPerPage={per_page}
-          onChange={(pagination) => getData(pagination)}
+          onChange={(pagination) => paginate(pagination)}
           itemClass="page-item"
           linkClass="page-link"
           firstPageText="First"
