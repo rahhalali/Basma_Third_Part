@@ -49,6 +49,10 @@ function TableList() {
     console.log(e.target.value);
   };
 
+  
+
+  useEffect(() => {
+
   const getData = async (page = 1) => {
     let result = await axios.get(
       `http://localhost:8000/api/admins/filter?nb=${pagination}&&page=${page}`,
@@ -69,9 +73,9 @@ function TableList() {
     setLoading(false);
   };
 
-  useEffect(() => {
-    getData();
-  }, [pagination,getData]);
+  getData();
+
+  }, [pagination]);
 
   // const pageCount = Math.ceil(users.length / usersPerPage);
 
