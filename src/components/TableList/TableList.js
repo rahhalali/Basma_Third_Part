@@ -75,7 +75,7 @@ function TableList() {
 
   getData();
 
-  }, [pagination,Page]);
+  }, [pagination,Page,access_token]);
 
   const paginate = (pageNumber) =>{
        setPage(pageNumber);
